@@ -1,0 +1,76 @@
+/* ============================================================================
+   MOTION — the five primitives flotme.ai actually uses. Its 130+ named
+   keyframes are variations on these; the keyframe bodies below are the
+   source's own values.
+   ========================================================================= */
+
+/* 1. RISE — the universal entrance. Source: opacity 0→1, translateY(18px→0) */
+@keyframes rise {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* 2. FLOAT — the source never bobs on Y alone; it always changes rotation
+   too (e.g. -18deg → -14deg), which is what sells the 3D. */
+@keyframes float {
+  0%, 100% { transform: rotate(var(--rot, 0deg)) translateY(0); }
+  50%      { transform: rotate(var(--rot-mid, var(--rot, 0deg))) translateY(var(--lift, -13px)); }
+}
+
+/* 3. DRIFT — ambient orbs / glows. Source: ±24–42px with scale 1.06–1.08 */
+@keyframes drift {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50%      { transform: translate(var(--dx, 28px), var(--dy, -20px)) scale(var(--ds, 1.08)); }
+}
+
+/* 4. BREATHE — source: scale(1) → scale(1.055) */
+@keyframes breathe {
+  0%, 100% { transform: scale(1);     opacity: var(--o-min, 0.76); }
+  50%      { transform: scale(1.055); opacity: var(--o-max, 1); }
+}
+
+/* 5. SHINE — a sweep that *holds*, then fires. Source keys: 0/58/100 parked
+   off-screen left, 76% swept right. Periodic, not continuous. */
+@keyframes shine {
+  0%, 58%, 100% { transform: translateX(-120%); }
+  76%           { transform: translateX(120%); }
+}
+
+/* bonus: source's bar-grow, uses the standalone `scale` property */
+@keyframes grow { from { opacity: 0.25; scale: 1 0; } to { opacity: 1; scale: 1; } }
+
+/* --- application classes -------------------------------------------------- */
+.u-rise    { animation: rise var(--d-enter) var(--ease) both; }
+.u-float   { animation: float var(--d-float) var(--ease-in-out) infinite; }
+.u-drift   { animation: drift var(--d-drift) linear infinite; }
+.u-breathe { animation: breathe 2.8s var(--ease-in-out) infinite; }
+.u-grow    { animation: grow var(--d-slow) var(--ease) both; transform-origin: bottom; }
+.u-shine::after {
+  content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
+  background: linear-gradient(105deg, transparent 38%, rgb(255 255 255 / 0.55) 50%, transparent 62%);
+  animation: shine 4.8s var(--ease-in-out) infinite;
+}
+
+/* --- stagger — set --i on children; the source cascades headline words ---- */
+.u-stagger > *      { animation: rise var(--d-enter) var(--ease) both;
+                      animation-delay: calc(var(--i, 0) * 90ms); }
+.u-stagger-fast > * { animation-delay: calc(var(--i, 0) * 55ms); }
+
+/* reveal-on-scroll: paused until IntersectionObserver adds .is-in */
+.u-reveal            { opacity: 0; }
+.u-reveal.is-in      { animation: rise var(--d-enter) var(--ease) both;
+                       animation-delay: calc(var(--i, 0) * 90ms); }
+
+/* --- reduced motion — the source honours this in 26 places; we kill all
+   ambient loops and collapse entrances to a plain fade. -------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .u-float, .u-drift, .u-breathe, .u-shine::after { animation: none !important; }
+  .u-rise, .u-grow, .u-stagger > *, .u-reveal.is-in {
+    animation-name: fade-only !important;
+    animation-duration: 0.20s !important;
+    animation-delay: 0s !important;
+  }
+  .u-reveal { opacity: 1; }
+  @keyframes fade-only { from { opacity: 0; } to { opacity: 1; } }
+  html { scroll-behavior: auto !important; }
+}

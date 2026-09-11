@@ -1,0 +1,37 @@
+{
+  "name": "birthday-site",
+  "private": true,
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "dev": "vite dev --host",
+    "build": "vite build",
+    "preview": "vite preview",
+    "prepare": "svelte-kit sync || echo ''",
+    "check": "svelte-kit sync && svelte-check --threshold error",
+    "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+    "video": "remotion studio",
+    "video:render": "remotion render Intro static/intro.mp4 --codec=h264 --crf=16 --pixel-format=yuv420p && remotion render Intro static/intro.webm --codec=vp9 --crf=26",
+    "video:vertical": "remotion render IntroVertical static/intro-vertical.mp4 --codec=h264 --crf=16 --pixel-format=yuv420p && remotion render IntroVertical static/intro-vertical.webm --codec=vp9 --crf=26",
+    "video:poster": "remotion still Intro static/intro-poster.jpg --frame=20",
+    "photos": "node scripts/photos.mjs"
+  },
+  "devDependencies": {
+    "@sveltejs/adapter-auto": "^7.0.1",
+    "@sveltejs/adapter-vercel": "^6.3.4",
+    "@sveltejs/kit": "^2.63.0",
+    "@sveltejs/vite-plugin-svelte": "^7.1.2",
+    "svelte": "^5.56.1",
+    "svelte-check": "^4.6.0",
+    "typescript": "^6.0.3",
+    "vite": "^8.0.16"
+  },
+  "dependencies": {
+    "@remotion/bundler": "^4.0.523",
+    "@remotion/cli": "^4.0.523",
+    "@remotion/renderer": "^4.0.523",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "remotion": "^4.0.523"
+  }
+}

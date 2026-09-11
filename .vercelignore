@@ -1,0 +1,6 @@
+# originals and render-time sources — never deploy
+files
+WALZZ - Night Changes
+remotion
+remotion.config.ts
+.svelte-kit
