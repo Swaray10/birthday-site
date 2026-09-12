@@ -22,7 +22,10 @@
         <Display as="h1" lines={chapters[0].lines} accentFrom={1} />
         <p class="t-lead u-rise" style="--i:3; animation-delay:.35s">{chapters[0].lead}</p>
         <div class="cta u-rise" style="animation-delay:.5s">
-          <PillButton href="#photos" shine>Start her story</PillButton>
+          <PillButton href="#photos" shine>Start scrolling</PillButton>
+          <span data-sveltekit-reload>
+            <PillButton href="/?intro" variant="ghost" dot="▶">Replay her story</PillButton>
+          </span>
           <span class="t-small">{her.date}</span>
         </div>
       </div>
@@ -121,6 +124,7 @@
         <Display as="h2" lines={chapters[5].lines} />
         <p class="t-lead">{chapters[5].lead}</p>
         <p class="t-small">Made by {her.from}.</p>
+        <div data-sveltekit-reload><PillButton href="/?intro" variant="ghost" dot="▶">Watch her story again</PillButton></div>
       </div>
       <div class="shootDeck u-reveal" use:reveal>
         {#each closerPhotos as ph, i}

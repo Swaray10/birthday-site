@@ -17,6 +17,8 @@
     stage = 'hidden';
     try { localStorage.setItem(KEY, '1'); } catch {}
     document.documentElement.style.removeProperty('overflow');
+    // drop ?intro so a plain reload doesn't replay again
+    if (location.search.includes('intro')) history.replaceState(null, '', location.pathname);
   }
 
   function play() {

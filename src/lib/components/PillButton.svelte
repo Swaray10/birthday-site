@@ -1,10 +1,10 @@
 <script lang="ts">
-  let { children, href = '', variant = 'solid', shine = false }:
-    { children?: any; href?: string; variant?: 'solid' | 'ghost'; shine?: boolean } = $props();
+  let { children, href = '', variant = 'solid', shine = false, dot = '↗' }:
+    { children?: any; href?: string; variant?: 'solid' | 'ghost'; shine?: boolean; dot?: string } = $props();
 </script>
 <svelte:element this={href ? 'a' : 'button'} {href} class="pill {variant}" class:u-shine={shine}>
   <span class="label">{@render children?.()}</span>
-  <span class="dot" aria-hidden="true">↗</span>
+  <span class="dot" aria-hidden="true">{dot}</span>
 </svelte:element>
 <style>
   .pill {
