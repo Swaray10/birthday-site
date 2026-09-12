@@ -17,6 +17,7 @@ export const PHOTOS = {
   'hadii-cute':   'hadii and tima cute',
   'hadii-goofy':  'Hadii and tima goofy',
   'hadi-sunset':  'hadi and tima sunset',
+  'hadi-final':   'hadi and tima final',
   'zaynab':       'tima and zaynab',
   'zaynab-sis':   'tima sis and zaynab',
   'ayesha':       'tima and Ayesha',

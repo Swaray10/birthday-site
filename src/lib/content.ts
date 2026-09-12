@@ -31,6 +31,7 @@ export const photos = [
   { name: 'teen',         ratio: 0.750, caption: 'Chicken Town years',      alt: 'Teenage Fatima on a street' },
   { name: 'zeya-cafe',    ratio: 0.563, caption: 'Fine dining, courtesy of Zeya',             alt: 'Zeya feeding Fatima at a cafe' },
   { name: 'hadii-goofy',  ratio: 0.750, caption: 'Hadii being Hadii',       alt: 'Hadii and Fatima pulling faces' },
+  { name: 'hadi-final',   ratio: 0.563, caption: 'Personal space: cancelled', alt: 'Hadi and Fatima cheek to cheek, both deadpan' },
   { name: 'foursome',     ratio: 1.427, caption: 'The whole committee',     alt: 'Fatima, Asuma, Zeya and Hadii together' },
   { name: 'wedding',      ratio: 1.251, caption: 'The actually-invited ones',          alt: 'The girls dressed up at a wedding table' },
   { name: 'shoot',        ratio: 0.667, caption: 'The photoshoot',          alt: 'Hadi, Fatima and Asuma posing in gowns' },
