@@ -4,7 +4,7 @@ export const her = {
   name: 'Fatima',
   nickname: 'Tima',
   age: 20,
-  date: '12 October 2026',  // ← PLACEHOLDER: set her real birthday
+  date: '12 September 2026',
   from: 'Swaray'
 };
 
